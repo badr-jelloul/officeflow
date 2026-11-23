@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OfficeFlow</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="main.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>OfficeFlow</h1>
+      <nav class="tabs" role="tablist">
+        <button class="tab active" data-tab="tasks" role="tab">Tasks</button>
+        <button class="tab" data-tab="clients" role="tab">Clients</button>
+        <button class="tab" data-tab="invoices" role="tab">Invoices</button>
+      </nav>
+      <div class="backup">
+        <button id="export-btn" class="ghost">Export backup</button>
+        <label class="ghost file-btn">
+          Import backup
+          <input id="import-input" type="file" accept="application/json" hidden />
+        </label>
+      </div>
+    </header>
+
+    <main>
+      <!-- TASKS -->
+      <section id="tab-tasks" class="panel">
+        <form id="task-form" class="row">
+          <input id="task-title" placeholder="New task…" required maxlength="200" />
+          <input id="task-due" type="date" />
+          <button type="submit">Add task</button>
+        </form>
+        <div class="filters">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="open">Open</button>
+          <button class="chip" data-filter="done">Done</button>
+        </div>
+        <ul id="task-list" class="list"></ul>
+      </section>
+
+      <!-- CLIENTS -->
+      <section id="tab-clients" class="panel" hidden>
+        <form id="client-form" class="row wrap">
+          <input id="client-name" placeholder="Client name" required maxlength="120" />
+          <input id="client-email" type="email" placeholder="Email" maxlength="120" />
+          <input id="client-phone" placeholder="Phone" maxlength="40" />
+          <button type="submit">Add client</button>
+        </form>
+        <ul id="client-list" class="list"></ul>
+      </section>
+
+      <!-- INVOICES -->
+      <section id="tab-invoices" class="panel" hidden>
+        <form id="invoice-form" class="row wrap">
+          <select id="invoice-client" required></select>
+          <input id="invoice-desc" placeholder="Description" required maxlength="200" />
+          <input id="invoice-amount" type="number" min="0" step="0.01" placeholder="Amount" required />
+          <button type="submit">Create invoice</button>
+        </form>
+        <p id="invoice-total" class="summary"></p>
+        <ul id="invoice-list" class="list"></ul>
+      </section>
+    </main>
+
+    <p id="empty-hint" class="hint" hidden></p>
+  </body>
+</html>
