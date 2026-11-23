@@ -2,6 +2,8 @@
 
 A small, private-by-default desktop app for running a small office: **tasks**, **clients** and **invoices** in one place. Built with [Tauri](https://tauri.app) and plain HTML/CSS/JavaScript. No account, no server, no tracking.
 
+![OfficeFlow invoices screen](docs/screenshot-invoices.png)
+
 ## Features
 
 - **Tasks:** add, tick off, filter (all / open / done), optional due dates.
